@@ -1,0 +1,68 @@
+// by: Arthur Sacomori
+
+// Palavra atual
+let palavra;
+
+// Declara a função
+function palavraAleatoria() {
+  // Define um array de possiveis palavras
+  let palavras = ["Caminhante", "Caminho", "Caminha"];
+  
+  // Escolhe uma palavra do array e retorna ela por meio função
+  return random(palavras);
+}
+  
+function setup() {
+  // Declara a tela
+  createCanvas(400, 400);
+  
+  let maximo = width; // Define o limite X
+  let minimo = 1; // Define o minimo X
+  
+  // Muda a palavra atual para o valor retornado pela função "palavraAleatoria", neste caso intuitivamente, uma palavra aleatoria
+  palavra = palavraAleatoria();
+}
+
+function lugaresBacanasParaPassear(diaDaSemana, bairro) {
+// retorno da função
+}
+
+// Declara a função
+function inicializaCores() {
+  // Muda a cor de fundo
+  background(220);
+  
+  // Muda a cor do texto para preto
+  fill("black");
+  
+  // Muda o tamanho do texto para 64
+  textSize(64);
+  
+  // Muda o alinhamento do texto para centralizado (A coordenada do texto é dependente da quantia de letras/tamanho da palavra)
+  textAlign(CENTER, CENTER);
+}
+
+// Declara a função
+function palavraParcial(minimo, maximo){
+  // Coordena a posição do mouse em relação ao quanto da palavra deve ser exibido
+  let quantidade = map(mouseX, minimo, maximo, 1, palavra.length);
+  
+  // Recorta a palavra em relação a quantia que deve ser exibida
+  let parcial = palavra.substring(0, quantidade);
+  
+  // Retorna a palavra recortada
+  return parcial;
+}
+
+function draw() {
+  
+  // Chama a função "inicializaCores" e não providencia argumentos ( . . . )
+  inicializaCores();
+  
+  // Muda o texto parcial para o retorno da função "palavraParcial", recebendo desta vez, os argumentos minimo (0), e maximo (width) que seriam a altura
+  let parcial = palavraParcial(0, width);
+  
+  // Exibe o texto
+  text(parcial, 200, 200);
+  
+}
